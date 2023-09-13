@@ -13,36 +13,35 @@ public class ThreeSumWithMultiplicity {
 
     public int input(int[] arr, int target) {
         long count = 0;
+        Arrays.sort(arr);
         for (int i = 0; i < arr.length; i++) {
-            Arrays.sort(arr);
-            int l = i + 1;
-            int r = arr.length - 1;
-            while (l < r) {
-                if (arr[i] + arr[l] + arr[r] == target && arr[l] != arr[r]) {
+            int left = i + 1;
+            int right = arr.length - 1;
+            while (left < right) {
+                if (arr[i] + arr[left] + arr[right] == target && arr[left] != arr[right]) {
                     int x = 1, y = 1;
-                    int j = l + 1, k = r - 1;
-                    while (j < r && arr[l] == arr[j]) {
+                    int j = left + 1, k = right - 1;
+                    while (j < right && arr[left] == arr[j]) {
                         x++;
                         j++;
                     }
-                    while (k > l && arr[r] == arr[k]) {
+                    while (k > left && arr[right] == arr[k]) {
                         y++;
                         k--;
                     }
-                    l = j;
-                    r = k;
+                    left = j;
+                    right = k;
                     count += x * y;
-                } else if (arr[i] + arr[l] + arr[r] < target) {
-                    l++;
-                } else if (arr[i] + arr[l] + arr[r] > target) {
-                    r--;
+                } else if (arr[i] + arr[left] + arr[right] < target) {
+                    left++;
+                } else if (arr[i] + arr[left] + arr[right] > target) {
+                    right--;
                 } else {
-                    count += (-l + r + 1) * (-l + r) / 2;
+                    count += (-left + right + 1) * (-left + right) / 2;
                     break;
                 }
             }
         }
-
         int ans = (int) (count % (1000000000 + 7));
         return ans;
 
