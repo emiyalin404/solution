@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.util.Map;
+// import java.util.Map;
 
 public class FruitIntoBaskets {
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class FruitIntoBaskets {
         int maxNoOfTrees = 1;
         int bucket1 = fruits[0];
         int bucket2 = fruits[0];
-        Map<Integer, Integer> mapIndex = new HashMap<>();
+        HashMap<Integer, Integer> mapIndex = new HashMap<>();
         int pickedReomTreesSoFar = 1;
         mapIndex.put(bucket1, 0);
         for (int i = 1; i < fruits.length; i++) {
