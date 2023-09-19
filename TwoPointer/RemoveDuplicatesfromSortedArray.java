@@ -3,9 +3,17 @@
 public class RemoveDuplicatesfromSortedArray {
     public static void main(String[] args) {
         RemoveDuplicatesfromSortedArray solution = new RemoveDuplicatesfromSortedArray();
-        int[] nums = { 1, 1, 2 };
+        int[] nums = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
         int ans = solution.input(nums);
         System.out.println(ans);
+        System.out.print("Array: [");
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i]);
+            if (i < nums.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
     }
 
     public int input(int[] nums) {

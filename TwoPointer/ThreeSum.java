@@ -5,7 +5,7 @@ import java.util.List;
 public class ThreeSum {
     public static void main(String[] args) {
         ThreeSum solution = new ThreeSum();
-        int[] nums = { -2, 0, 0, 2, 2 };
+        int[] nums = { -1, 0, 1, 2, -1, -4 };
         List<List<Integer>> ans = solution.input(nums);
         System.out.println(ans);
     }
