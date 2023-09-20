@@ -1,7 +1,7 @@
 public class BackspaceStringCompare {
     public static void main(String[] args) {
         BackspaceStringCompare solution = new BackspaceStringCompare();
-        String s = "ab#c", t = "ab#c";
+        String s = "bb#c", t = "ab#c";
         boolean ans = solution.input(s, t);
         System.out.println(ans);
     }
