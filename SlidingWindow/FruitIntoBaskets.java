@@ -23,7 +23,6 @@ public class FruitIntoBaskets {
                 }
                 ws += 1;
             }
-
         }
         max = Math.max(max, i - ws);
         return max;

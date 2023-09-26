@@ -13,24 +13,25 @@ public class PermutationinString {
         if (s1.length() > s2.length()) {
             return false;
         }
-        HashMap<Character, Integer> char1 = new HashMap<>();
-        HashMap<Character, Integer> char2 = new HashMap<>();
+        HashMap<Character, Integer> map1 = new HashMap<>();
+        HashMap<Character, Integer> map2 = new HashMap<>();
         int left = 0;
         for (int i = 0; i < s1.length(); i++) {
-            char c = s1.charAt(i);
-            char1.put(c, char1.getOrDefault(c, 0) + 1);
+            char c1 = s1.charAt(i);
+            map1.put(c1, map1.getOrDefault(c1, 0) + 1);
         }
+        ;
         for (int right = 0; right < s2.length(); right++) {
             char c2 = s2.charAt(right);
-            char2.put(c2, char2.getOrDefault(c2, 0) + 1);
+            map2.put(c2, map2.getOrDefault(c2, 0) + 1);
             if (right - left + 1 == s1.length()) {
-                if (char1.equals(char2)) {
+                if (map1.equals(map2)) {
                     return true;
                 }
-                char c1 = s2.charAt(left);
-                char2.put(c1, char2.get(c1) - 1);
-                if (char2.get(c1) == 0) {
-                    char2.remove(c1);
+                char c = s2.charAt(left);
+                map2.put(c, map2.get(c) - 1);
+                if (map2.get(c) == 0) {
+                    map2.remove(c);
                 }
                 left++;
             }

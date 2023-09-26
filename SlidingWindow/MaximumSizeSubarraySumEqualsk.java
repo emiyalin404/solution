@@ -6,32 +6,32 @@ import java.util.Map;
 public class MaximumSizeSubarraySumEqualsk {
     public static void main(String[] args) {
         MaximumSizeSubarraySumEqualsk solution = new MaximumSizeSubarraySumEqualsk();
-        int[] nums = { 1, -2, 5, -1, 3 };
+        int[] nums = { 2, -1, 5, -2, 3 };
         int k = 3;
         int[] ans = solution.input(nums, k);
         System.out.println(ans);
     }
 
     public int[] input(int[] nums, int k) {
-        Map<Integer, Integer> sumindex = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
         int maxLen = 0;
-        int currSum = 0;
         int[] result = new int[0];
         for (int i = 0; i < nums.length; i++) {
-            currSum += nums[i];
-            if (currSum == k) {
+            sum += nums[i];
+            if (sum == k) {
                 maxLen = i + 1;
                 result = Arrays.copyOfRange(nums, 0, maxLen);
             }
-            if (sumindex.containsKey(currSum - k)) {
-                int startIndex = sumindex.get(currSum - k);
-                if (i - startIndex > maxLen) {
-                    maxLen = i - startIndex;
-                    result = Arrays.copyOfRange(nums, startIndex + 1, i + 1);
+            if (map.containsKey(sum - k)) {
+                int index = map.get(sum - k);
+                if (i - index > maxLen) {
+                    maxLen = i - index;
+                    result = Arrays.copyOfRange(nums, index + 1, i + 1);
                 }
             }
-            if (!sumindex.containsKey(currSum)) {
-                sumindex.put(currSum, i);
+            if (!map.containsKey(sum)) {
+                map.put(sum, i);
             }
         }
         return result;
