@@ -1,7 +1,7 @@
 public class CircularArrayLoop {
     public static void main(String[] args) {
         CircularArrayLoop solution = new CircularArrayLoop();
-        int[] nums = { -1, -2, -3, -4, -5, 6 };
+        int[] nums = { 2, -1, 1, 2, 2 };
         boolean ans = solution.input(nums);
         System.out.println(ans);
     }
