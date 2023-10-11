@@ -4,7 +4,7 @@ import java.util.List;
 public class IntervalListIntersections {
     public static void main(String[] args) {
         IntervalListIntersections solut = new IntervalListIntersections();
-        int[][] firsiList = { { 0, 2 }, { 5, 10 }, { 13, 23 }, { 24, 25 } };
+        int[][] firsiList = { { 0, 2 }, { 4, 10 }, { 13, 23 }, { 24, 25 } };
         int[][] secondList = { { 1, 5 }, { 8, 12 }, { 15, 24 }, { 25, 26 } };
         int[][] ans = solut.input(firsiList, secondList);
         System.out.println(ans);
