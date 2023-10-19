@@ -1,6 +1,7 @@
 
 import java.util.Collections;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class SlidingWindowMedian {
     public static void main(String[] args) {
@@ -12,35 +13,43 @@ public class SlidingWindowMedian {
     }
 
     public double[] input(int[] nums, int k) {
-        double[] result = new double[nums.length - k + 1];
-        int p = 0;
-        PriorityQueue<Integer> max = new PriorityQueue<>(Collections.reverseOrder());
-        PriorityQueue<Integer> min = new PriorityQueue<>();
+        Queue<Integer> minHeap = new PriorityQueue<>();
+        Queue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
-        int i = 0, j = 0;
-        while (j < nums.length) {
-            if (max.size() <= min.size()) {
-                min.add(nums[j]);
-                max.add(min.poll());
-            } else {
-                max.add(nums[j]);
-                min.add(max.poll());
+        double[] res = new double[nums.length - k + 1];
+        for (int i = 0; i < nums.length; i++) {
+            if (i >= k) {
+                if (!minHeap.remove(nums[i - k]))
+                    maxHeap.remove(nums[i - k]);
             }
-            if (j - i + 1 < k) {
-                j++;
-            } else if (j - i + 1 == k) {
-                if (max.size() == min.size()) {
-                    result[p++] = (double) ((long) max.peek() + (long) min.peek()) / 2.0;
+
+            // If k is odd, max heap is of odd size and min heap is of even
+            // else both are of even size
+            if (!maxHeap.isEmpty() && nums[i] <= maxHeap.peek()) {
+                maxHeap.add(nums[i]);
+                if (((k & 1) == 1 && maxHeap.size() > k / 2 + 1) || ((k & 1) == 0 && maxHeap.size() > k / 2)) {
+                    minHeap.offer(maxHeap.poll());
+                }
+            } else {
+                minHeap.add(nums[i]);
+                if (minHeap.size() > k / 2) {
+                    maxHeap.offer(minHeap.poll());
+                }
+            }
+            while (!minHeap.isEmpty() && !maxHeap.isEmpty() && maxHeap.peek() > minHeap.peek()) {
+                int temp1 = maxHeap.poll();
+                int temp2 = minHeap.poll();
+                maxHeap.add(temp2);
+                minHeap.add(temp1);
+            }
+            if (minHeap.size() + maxHeap.size() == k) {
+                if ((k & 1) == 1) {
+                    res[i - k + 1] = maxHeap.peek();
                 } else {
-                    result[p++] = (double) max.peek();
+                    res[i - k + 1] = ((long) minHeap.peek() + (long) maxHeap.peek()) / 2.0;
                 }
-                if (!max.remove(nums[i])) {
-                    min.remove(nums[i]);
-                }
-                i++;
-                j++;
             }
         }
-        return result;
+        return res;
     }
 }

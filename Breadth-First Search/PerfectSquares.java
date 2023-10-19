@@ -15,7 +15,7 @@ public class PerfectSquares {
         }
 
         int[] squar = new int[(int) Math.sqrt(n) + 1];
-        System.out.println(Math.sqrt(n));
+        // System.out.println(Math.sqrt(n));
         for (int i = 1; i <= Math.sqrt(n); i++) {
             squar[i] = i * i;
         }

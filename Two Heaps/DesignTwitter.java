@@ -40,7 +40,6 @@ public class DesignTwitter {
         for (int follower : followers.getOrDefault(userId, new HashSet<>())) {
             newsFeed.computeIfAbsent(follower, pq -> new PriorityQueue<>(com)).add(arr);
         }
-
     }
 
     public List<Integer> getNewsFeed(int userId) {
