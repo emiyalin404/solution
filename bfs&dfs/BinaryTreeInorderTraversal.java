@@ -11,18 +11,15 @@ public class BinaryTreeInorderTraversal {
         System.out.println(ans);
     }
 
-    List<Integer> res = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
 
     public List<Integer> input(TreeNode root) {
-        traversal(root);
-        return res;
+        if (root != null) {
+            input(root.left);
+            list.add(root.val);
+            input(root.right);
+        }
+        return list;
     }
 
-    public void traversal(TreeNode root) {
-        if (root != null) {
-            traversal(root.left);
-            res.add(root.val);
-            traversal(root.right);
-        }
-    }
 }
