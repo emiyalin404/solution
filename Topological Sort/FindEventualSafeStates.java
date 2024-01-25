@@ -38,8 +38,8 @@ public class FindEventualSafeStates {
             for (int e : connected.get(node)) {
                 outdegree[e]--;
                 if (outdegree[e] == 0) {
-                    ans.add(e);
                     q.add(e);
+                    ans.add(e);
                 }
             }
         }

@@ -1,7 +1,7 @@
 public class CountingBits {
     public static void main(String[] args) {
         CountingBits solution = new CountingBits();
-        int n = 5;
+        int n = 2;
         int[] ans = solution.input(n);
         System.out.println(ans);
     }

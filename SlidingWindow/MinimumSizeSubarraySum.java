@@ -8,6 +8,7 @@ public class MinimumSizeSubarraySum {
     }
 
     public int input(int[] nums, int target) {
+
         int sum = 0, start = 0;
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
@@ -23,6 +24,21 @@ public class MinimumSizeSubarraySum {
         } else {
             return min;
         }
+        // int sum = 0, start = 0;
+        // int min = Integer.MAX_VALUE;
+        // for (int i = 0; i < nums.length; i++) {
+        // sum += nums[i];
+        // while (sum >= target) {
+        // min = Math.min(min, i - start + 1);
+        // sum -= nums[start];
+        // start++;
+        // }
+        // }
+        // if (min == Integer.MAX_VALUE) {
+        // return 0;
+        // } else {
+        // return min;
+        // }
     }
 
 }

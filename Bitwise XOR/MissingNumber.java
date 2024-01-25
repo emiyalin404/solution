@@ -1,7 +1,7 @@
 public class MissingNumber {
     public static void main(String[] args) {
         MissingNumber solution = new MissingNumber();
-        int[] nums = { 3, 0, 1 };
+        int[] nums = { 3, 2, 0, 1 };
         int ans = solution.input(nums);
         System.out.println(ans);
     }
